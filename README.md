@@ -1,62 +1,61 @@
-# A Practical Approach: Running Test cycle with different choices of Loss function and Activation Functions.
+# Heart Failure Mortality Prediction (ANN)
 
-We will use Heart failure clinical record data set (source:https://www.kaggle.com/datasets/andrewmvd/heart-failure-clinical-data/data). We will use ANN model with several activation functions with the same loss function.
+> **Note:** Despite the repository name, this project has **nothing to do with cocktails**. It is a binary classification notebook that predicts heart failure mortality using an artificial neural network.
 
-We are trying to predict / classify …..  
+## Overview
 
-Cardiovascular diseases (CVDs) are the number 1 cause of death globally, taking an estimated 17.9 million lives each year, which accounts for 31% of all deaths worlwide.
+A Jupyter notebook (`main_Code_blog.ipynb`) that builds and evaluates Keras/TensorFlow ANN models to predict whether a patient will experience a death event during follow-up, using clinical heart failure records.
 
-Heart failure is a common event caused by CVDs and this dataset contains 12 features that can be used to predict mortality by heart failure.
+## Dataset
 
-By utilizing population-wide methods to address behavioral risk factors like tobacco use, unhealthy food and obesity, physical inactivity, and harmful alcohol consumption, most cardiovascular diseases can be averted.
+**Heart Failure Clinical Records** — 12 clinical features per patient with a binary target `DEATH_EVENT`.
 
-A ML or DL model can be very helpful in the early detection and management of cardiovascular disease or high-risk individuals.
+| Feature | Description |
+|---------|-------------|
+| `age` | Patient age |
+| `anaemia` | Below-normal hemoglobin |
+| `creatinine_phosphokinase` | CPK level (mcg/L) |
+| `diabetes` | Diabetic status |
+| `ejection_fraction` | Left ventricle ejection fraction |
+| `high_blood_pressure` | Hypertension status |
+| `platelets` | Platelet count (kilo platelets/mL) |
+| `serum_creatinine` | Serum creatinine (mg/dL) |
+| `serum_sodium` | Serum sodium (mEq/L) |
+| `sex` | Patient sex |
+| `smoking` | Smoking status |
+| `time` | Follow-up period (months) |
+| `DEATH_EVENT` | Target: patient deceased during follow-up |
 
-Based only on serum creatinine and ejection fraction, we will be able to forecast the survival of individuals suffering from heart failure. For that, our goal is:
+Source: [Kaggle — Heart Failure Clinical Data](https://www.kaggle.com/datasets/andrewmvd/heart-failure-clinical-data)
 
-- To classify / predict whether a patient is prone to heart failure depending on multiple attributes.
-- It is a binary classification with multiple numerical and categorical features.
+## What the Notebook Does
 
+1. Exploratory data analysis (correlation heatmap, distribution plots, box plots)
+2. Feature/target split (`DEATH_EVENT` as target)
+3. Train/test split with standard scaling
+4. Sequential ANN with Dense, BatchNormalization, and Dropout layers
+5. Experiments with different loss functions (`binary_crossentropy`, `categorical_crossentropy`, `mean_squared_error`) and activation functions
+6. Evaluation with accuracy, precision, recall, F1, and confusion matrix
 
-## About the data:
-- age: Age of the patient
-- anemia: If the patient had the hemoglobin below the normal range
-- creatinine_phosphokinase: The level of the creatine phosphokinase in the blood in mcg/L
-- diabetes: If the patient was diabetic
-- ejection_fraction: Ejection fraction is a measurement of how much blood the left ventricle - - pumps out with each contraction
-- high_blood_pressure: If the patient had hypertension
-- platelets: Platelet count of blood in kilo platelets/mL
-- serum_creatinine: The level of serum creatinine in the blood in mg/dL
-- serum_sodium: The level of serum sodium in the blood in mEq/L
-- sex: The sex of the patient
-- smoking: If the patient smokes actively or ever did in past
-- time: It is the time of the patient's follow-up visit for the disease in months
-- DEATH_EVENT: If the patient deceased during the follow-up period
+## Tech Stack
 
-## Summary of Validation Accuracy(Closing Call)
-![alt text](media/tb1.PNG)</br>
-![alt text](media/tb2.PNG)</br>
-![alt text](media/image10.png)</br>
-![alt text](media/tb3.PNG)</br>
-![alt text](media/image9.png)</br></br>
+- Python 3
+- pandas, numpy, seaborn, matplotlib
+- scikit-learn (preprocessing, metrics, train_test_split)
+- Keras / TensorFlow
 
-## Classification:
-![alt text](media/tb4.PNG)</br>
-<b>Classification - Loss Function: Categorical_crossentropy : </b>
-![alt text](media/image2.png)</br>
-![alt text](media/tb5.PNG)</br>
-<b>Classification - Loss Function: Mean_squared_error :</b>
+## Prerequisites
 
-![alt text](media/tb6.PNG)</br>
-<b>Classification - Loss Function: Binary_crossentropy : </b>
-![alt text](media/image4.png)</br>
+```bash
+pip install pandas numpy seaborn matplotlib scikit-learn tensorflow jupyter
+```
 
-## Contribution
-Follow these guidelines:
+Download the heart failure clinical dataset and place it where the notebook expects it.
 
-- Fork the repository.
-- Create a new branch for your feature or bug fix.
-- Commit your changes.
-- Submit a pull request.
+## Usage
 
-<<<Happy coding>>>
+```bash
+jupyter notebook main_Code_blog.ipynb
+```
+
+Run all cells to reproduce the EDA, model training, and evaluation results.
